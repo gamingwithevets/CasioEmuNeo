@@ -33,7 +33,8 @@ namespace casioemu
 	    SDL_Renderer *renderer;
 	    SDL_Texture *interface_texture;
 
-		enum Sprite : unsigned {
+		struct Sprite {
+			enum Enum : unsigned {};
 		};
 
 		static const SpriteBitmap sprite_bitmap[];
@@ -111,84 +112,90 @@ namespace casioemu
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpedantic" // https://gcc.gnu.org/bugzilla/show_bug.cgi?id=61491
 	// Note: SPR_PIXEL must be the first enum member and SPR_MAX must be the last one.
-	template <> enum Screen<HW_CLASSWIZ_II>::Sprite :unsigned
+	template <> struct Screen<HW_CLASSWIZ_II>::Sprite
 	{
-		SPR_PIXEL,
-		SPR_S,
-		SPR_MATH,
-		SPR_D,
-		SPR_R,
-		SPR_G,
-		SPR_FIX,
-		SPR_SCI,
-		SPR_E,
-		SPR_CMPLX,
-		SPR_ANGLE,
-		SPR_WDOWN,
-		SPR_VERIFY,
-		SPR_LEFT,
-		SPR_DOWN,
-		SPR_UP,
-		SPR_RIGHT,
-		SPR_PAUSE,
-		SPR_SUN,
-		SPR_MAX
+		enum Enum : unsigned {
+			SPR_PIXEL,
+			SPR_S,
+			SPR_MATH,
+			SPR_D,
+			SPR_R,
+			SPR_G,
+			SPR_FIX,
+			SPR_SCI,
+			SPR_E,
+			SPR_CMPLX,
+			SPR_ANGLE,
+			SPR_WDOWN,
+			SPR_VERIFY,
+			SPR_LEFT,
+			SPR_DOWN,
+			SPR_UP,
+			SPR_RIGHT,
+			SPR_PAUSE,
+			SPR_SUN,
+			SPR_MAX
+		};
 	};
 
-	template <> enum Screen<HW_CLASSWIZ>::Sprite : unsigned
+	template <> struct Screen<HW_CLASSWIZ>::Sprite
 	{
-		SPR_PIXEL,
-		SPR_S,
-		SPR_A,
-		SPR_M,
-		SPR_STO,
-		SPR_MATH,
-		SPR_D,
-		SPR_R,
-		SPR_G,
-		SPR_FIX,
-		SPR_SCI,
-		SPR_E,
-		SPR_CMPLX,
-		SPR_ANGLE,
-		SPR_WDOWN,
-		SPR_LEFT,
-		SPR_DOWN,
-		SPR_UP,
-		SPR_RIGHT,
-		SPR_PAUSE,
-		SPR_SUN,
-		SPR_MAX
+		enum Enum : unsigned {
+			SPR_PIXEL,
+			SPR_S,
+			SPR_A,
+			SPR_M,
+			SPR_STO,
+			SPR_MATH,
+			SPR_D,
+			SPR_R,
+			SPR_G,
+			SPR_FIX,
+			SPR_SCI,
+			SPR_E,
+			SPR_CMPLX,
+			SPR_ANGLE,
+			SPR_WDOWN,
+			SPR_LEFT,
+			SPR_DOWN,
+			SPR_UP,
+			SPR_RIGHT,
+			SPR_PAUSE,
+			SPR_SUN,
+			SPR_MAX
+		};
 	};
 
-	template <> enum Screen<HW_ES_PLUS>::Sprite : unsigned
+	template <> struct Screen<HW_ES_PLUS>::Sprite
 	{
-		SPR_PIXEL,
-		SPR_S,
-		SPR_A,
-		SPR_M,
-		SPR_STO,
-		SPR_RCL,
-		SPR_STAT,
-		SPR_CMPLX,
-		SPR_MAT,
-		SPR_VCT,
-		SPR_D,
-		SPR_R,
-		SPR_G,
-		SPR_FIX,
-		SPR_SCI,
-		SPR_MATH,
-		SPR_DOWN,
-		SPR_UP,
-		SPR_DISP,
-		SPR_MAX
+		enum Enum : unsigned {
+			SPR_PIXEL,
+			SPR_S,
+			SPR_A,
+			SPR_M,
+			SPR_STO,
+			SPR_RCL,
+			SPR_STAT,
+			SPR_CMPLX,
+			SPR_MAT,
+			SPR_VCT,
+			SPR_D,
+			SPR_R,
+			SPR_G,
+			SPR_FIX,
+			SPR_SCI,
+			SPR_MATH,
+			SPR_DOWN,
+			SPR_UP,
+			SPR_DISP,
+			SPR_MAX
+		};
 	};
 
 #pragma GCC diagnostic pop
 
 
-	template<> const SpriteBitmap Screen<HW_CLASSWIZ_II>::sprite_bitmap[SPR_MAX] = {
+	template<> const SpriteBitmap Screen<HW_CLASSWIZ_II>::sprite_bitmap[Screen<HW_CLASSWIZ_II>::Sprite::SPR_MAX] = {
 		{"rsd_pixel",    0,    0},
 		{"rsd_s",     0x01, 0x01},
 		{"rsd_math",  0x01, 0x03},
@@ -210,7 +217,7 @@ namespace casioemu
 		{"rsd_sun",   0x01, 0x16}
 	};
 
-	template<> const SpriteBitmap Screen<HW_CLASSWIZ>::sprite_bitmap[SPR_MAX] = {
+	template<> const SpriteBitmap Screen<HW_CLASSWIZ>::sprite_bitmap[Screen<HW_CLASSWIZ>::Sprite::SPR_MAX] = {
 		{"rsd_pixel",    0,    0},
 		{"rsd_s",     0x01, 0x00},
 		{"rsd_a",     0x01, 0x01},
@@ -234,7 +241,7 @@ namespace casioemu
 		{"rsd_sun",   0x01, 0x16}
 	};
 
-	template<> const SpriteBitmap Screen<HW_ES_PLUS>::sprite_bitmap[SPR_MAX] = {
+	template<> const SpriteBitmap Screen<HW_ES_PLUS>::sprite_bitmap[Screen<HW_ES_PLUS>::Sprite::SPR_MAX] = {
 		{"rsd_pixel",    0,    0},
 		{"rsd_s",     0x10, 0x00},
 		{"rsd_a",     0x04, 0x00},
@@ -258,7 +265,7 @@ namespace casioemu
 
 	template <HardwareId hardware_id> void Screen<hardware_id>::Initialise()
 	{
-		auto constexpr SPR_MAX = Sprite::SPR_MAX;
+		auto constexpr SPR_MAX = Screen<hardware_id>::Sprite::SPR_MAX;
 
 		static_assert(SPR_MAX == (sizeof(sprite_bitmap) / sizeof(sprite_bitmap[0])), "SPR_MAX and sizeof(sprite_bitmap) don't match");
 

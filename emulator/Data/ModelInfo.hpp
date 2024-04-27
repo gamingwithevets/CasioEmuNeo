@@ -9,8 +9,9 @@ namespace casioemu
 	class SpriteInfo;
 	class ColourInfo;
 
-	struct ModelInfo
+	class ModelInfo
 	{
+	public:
 		ModelInfo(Emulator &emulator, std::string key);
 		Emulator &emulator;
 		std::string key;

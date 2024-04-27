@@ -5,8 +5,9 @@
 
 namespace casioemu
 {
-	struct ColourInfo
+	class ColourInfo
 	{
+	public:
 		int r, g, b;
 	};
 }

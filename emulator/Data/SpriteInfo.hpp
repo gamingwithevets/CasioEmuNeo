@@ -5,8 +5,9 @@
 
 namespace casioemu
 {
-	struct SpriteInfo
+	class SpriteInfo
 	{
+	public:
 		SDL_Rect src, dest;
 	};
 }
