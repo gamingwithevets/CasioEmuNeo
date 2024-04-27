@@ -1,14 +1,14 @@
-# ui介绍
---> [返回目录](../README.md)
+# UI introduction
+--> [Back to README](../README.md)
 
-## 监视窗口
+## Watch Window
 ![](wc1.png)
 
-## 内存窗口
+## Memory Editor
 ![](wc2.png)
 
-## ROP注入窗口
+## ROP Injector
 ![](wc3.png)
 
-## 调试窗口
+## Disassembler
 ![](image.png)

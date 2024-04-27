@@ -2,7 +2,6 @@
 .xmake/
 .vscode/
 .cache/
-models/
 asm/__pycache__
 models/*/*.bin
 models/*/*.asm
@@ -11,3 +10,4 @@ ignore/
 build/
 imgui.ini
 font.ttc
+*.otf

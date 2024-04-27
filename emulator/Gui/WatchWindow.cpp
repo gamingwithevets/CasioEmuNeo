@@ -107,7 +107,7 @@ void WatchWindow::Show(){
     ImGui::EndChild();
     ImGui::BeginChild("##reg_trace",ImVec2(0,ImGui::GetTextLineHeightWithSpacing()*4),ImGuiChildFlags_None,ImGuiWindowFlags_AlwaysHorizontalScrollbar);
     if(!CodeViewer::instance->isbreaked){
-        ImGui::TextColored(ImVec4(255,255,0,255), "寄存器请在断点状态下查看");
+        ImGui::TextColored(ImVec4(255,255,0,255), EmuGloConfig[UI_REPORT_CHECK_REGS]);
         PrepareRX();
     }else {
         ShowRX();

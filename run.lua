@@ -2,7 +2,7 @@ function main(arg)
 
     local model_name = "./models/"
     if arg == nil then
-        model_name = model_name .. "fx991cnx"
+        model_name = model_name .. "fx580vnx"
     else
         model_name = model_name .. arg
     end

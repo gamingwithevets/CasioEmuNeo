@@ -32,7 +32,22 @@ enum TranslateMap{
     UI_INFO1,
     UI_INFO2,
     UI_INFO3,
-    UI_MEMEDIT
+    UI_MEMEDIT,
+    UI_DOCKING,
+    UI_BRKPNT_SEL,
+    UI_BRKPNT_READ,
+    UI_BRKPNT_WRITE,
+    UI_BRKPNT_DEL,
+    UI_BRKPNT_NONE,
+    UI_LISTEN_ADDR,
+    UI_DEL_HISTORY,
+    UI_MODEL,
+    UI_WRITE,
+    UI_READ,
+    UI_BRKPNT,
+    UI_BRKPNT_ADDR,
+    UI_BRKPNT_ADDADDR,
+    UI_REPORT_CHECK_REGS,
 };
 
 class EmuConfig{

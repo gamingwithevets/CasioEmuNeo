@@ -1,52 +1,47 @@
-# CasioEmuNeo
+[English](./README.md)&nbsp; [中文版本](docs/README_zh.md)
+(Note: Chinese README is unchanged.)
 
-[中文版本](./README.md) | [English](./docs/README_en.md)
+This is a fork of:
+- [CasioEmuNeo](https://github.com/qiufuyu123/CasioEmuNeo) by qiufuyu123, an upgraded version of
+- [CasioEmuNeo](https://github.com/qiufuyu123/CasioEmuX) by qiufuyu123, a fork of
+- [CasioEmu](https://github.com/gamingwithevets/CasioEmu) by me, a fork of
+- [CasioEmu](https://github.com/user202729/CasioEmu) by user202729, a fork of
+- [CasioEmu](https://github.com/LBPHacker/CasioEmu) by LBPHacker.
 
-卡西欧classwizard系列模拟器，汇编器，调试器，rop自动注入器
+This English README has added additional information from the Chinese README. (god I hate language boundaries)
 
-## 教程
-- [基础界面操作](./docs/intro_ui.md)
-- [汇编器使用](./docs/intro_asm.md)
-- [rop注入/调试](./docs/intro_rop.md)
+## Downloads
+There are no pre-compiled binaries at the moment; however a continuous build may be set up in the future.
 
-## 不想从源码构建？下载windows预编译版本  
-[release](https://github.com/qiufuyu123/CasioEmuNeo/releases)
+## Tutorials
+- [Basic interface operation](./docs/intro_ui.md)
+- [Assembler usage](./docs/intro_asm.md)
+- [ROP injection/debugging](./docs/intro_rop.md)
 
-## 构建
-0. 安装 xmake & Mingw & 下载字体
-   1. `curl -fsSL https://xmake.io/shget.text | bash`   
-
-   2. 安装并配置 Mingw64 *(windows下选则Posix版本!!!不是win32版本)
-   3. [字体](http://unifoundry.com/pub/unifont/unifont-15.1.05/font-builds/unifont-15.1.05.otf) 下载,重命名为unifont.otf,放到工程根目录
-1. 构建模拟器  
-   ```
+## Building from source
+0. Download prerequisites
+   1. Get your preferred Linux terminal up and running!
+   2. Install xmake. You can usually install it through your package manager.
+   3. Since ImGui by default uses an ASCII only font, you will have to download a seperate Unicode font for Unicode characters to render correctly. [Unifont](https://unifoundry.com/pub/unifont/) is recommended.
+1. Build
+   You may need to install additional dependencies along the way.
+   ```shell
    cd emulator
    xmake f -p mingw
    xmake
-   xmake run CasioEmuX ../models/fx991cnx
-   ```  
-
-2. *可选* `反编译器`  
    ```
+2. Set up a model profile
+   Model profiles are stored in directories, which contain a `model.lua` file. Examples can be found in the `models` directory.  
+   You will need to generate a disassembly using [**user202729's C++ disassembler**](https://github.com/user202729/fxesplus/tree/master/disas):
+   ```shell
+   git clone https://github.com/user202729/fxesplus.git
    cd disas
    make
+   bin/u8-disas <ROM file path> 0 <ROM file size> <output filename>
    ```
-3. *可选* 构建机型  
-	下载对应机型的 `rom`,命名为 `rom.bin` 放在models 目录下对应名称的目录内  
-    **注意:**  
-    **由于casio版权问题，源码不包含任何rom,rom文件请自行找资源下载**  
-    **如果想要fx991cnx的rom，请到release页面下载编译好的exe版本**
-   
-   例子, fx991cnx:
+   (make sure the line terminators are correct)
+
+   Place the disassembly file in the profile directory as `_disas.txt` and the ROM file as `rom.bin` (you can change the ROM filename in `model.lua`), then run the following in the `emulator` directory:
+   ```shell
+   xmake run CasioEmuX <model profile directory>
    ```
-	cd disas
-   ```
-   ```
-   ./bin/u8-disas ../models/fx991cnx/rom.bin  0 0x40000 ./_disas.txt
-   ```
-   将_disas.txt复制到 models/fxcnx991目录
-   ```
-   cp ./_disas.txt ../models/fx991cnx/
-   ```
-   修改 `model.lua`  
-   设置`rom_path` 为`"rom.bin"`  

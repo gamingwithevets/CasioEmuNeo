@@ -73,7 +73,7 @@ void DebugUi::DockerHelper(){
     if (dockspace_flags & ImGuiDockNodeFlags_PassthruCentralNode)
         window_flags |= ImGuiWindowFlags_NoBackground;    if (!opt_padding)
         ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-    ImGui::Begin("按住SHIFT，拖拽来启用docking", p_open, window_flags);
+    ImGui::Begin(EmuGloConfig[UI_DOCKING], p_open, window_flags);
     if (!opt_padding)
         ImGui::PopStyleVar();
     if (opt_fullscreen)
