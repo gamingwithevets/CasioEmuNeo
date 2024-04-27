@@ -47,7 +47,6 @@ namespace casioemu
 		
 		SDL_Renderer *renderer;
 		SDL_Texture *interface_texture;
-		unsigned int cycles_per_second;
 		unsigned int timer_interval;
 		bool running, paused;
 		unsigned int last_frame_tick_count;
@@ -122,7 +121,6 @@ namespace casioemu
 		void WindowResize(int width, int height);
 		void ExecuteCommand(std::string command);
 		unsigned int GetCyclesPerSecond();
-		void SetClockSpeed(float speed);
 		bool GetPaused();
 		void SetPaused(bool paused);
 		void UIEvent(SDL_Event &event);
