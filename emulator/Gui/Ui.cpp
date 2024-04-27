@@ -19,8 +19,21 @@ UI_SINGLE_IMPL(DebugUi)
 DebugUi::DebugUi()
 {
     instance = this;
-    ram_length = casioemu::Emulator::instance->GetModelInfo("ram_length");
-    ram_start = casioemu::Emulator::instance->GetModelInfo("ram_start");
+    switch (casioemu::Emulator::instance->hardware_id) {
+        case casioemu::HW_ES_PLUS:
+            ram_start = 0x8000;
+            ram_length = 0x8000;
+            break;
+        case casioemu::HW_CLASSWIZ:
+            ram_start = 0xd000;
+            ram_length = 0x2000;
+            break;
+        case casioemu::HW_CLASSWIZ_II:
+            ram_start = 0x9000;
+            ram_length = 0x7000;
+            break;
+    }
+
     window = SDL_CreateWindow(EmuGloConfig[UI_TITLE], SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, window_flags);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
     if (renderer == nullptr)
@@ -139,7 +152,7 @@ void DebugUi::UpdateMarkedSpans(const MemoryEditor::OptionalMarkedSpans &spans) 
 void gui_loop(){
     
 }
-int test_gui(){
+/*int test_gui(){
     //SDL_Delay(1000*5);
     
     //ImGui_ImplSDL2_InitForSDLRenderer(renderer);
@@ -154,4 +167,4 @@ int test_gui(){
 //     SDL_DestroyRenderer(renderer);
 //     SDL_DestroyWindow(window);
 //     SDL_Quit();
-// }
+// }*/

@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
 		// printf("No model path supplied\n");
 		// exit(2);
 	}
-	argv_map["script"]="lua-common.lua";
+	if (!argv_map.count("script")) argv_map["script"]="lua-common.lua";
 
 	int sdlFlags = SDL_INIT_VIDEO | SDL_INIT_TIMER;
 	if (SDL_Init(sdlFlags) != 0)

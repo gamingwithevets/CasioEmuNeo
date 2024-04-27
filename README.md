@@ -3,7 +3,7 @@
 
 This is a fork of:
 - [CasioEmuNeo](https://github.com/qiufuyu123/CasioEmuNeo) by qiufuyu123, an upgraded version of
-- [CasioEmuNeo](https://github.com/qiufuyu123/CasioEmuX) by qiufuyu123, a fork of
+- [CasioEmuX](https://github.com/qiufuyu123/CasioEmuX) by qiufuyu123, a fork of
 - [CasioEmu](https://github.com/gamingwithevets/CasioEmu) by me, a fork of
 - [CasioEmu](https://github.com/user202729/CasioEmu) by user202729, a fork of
 - [CasioEmu](https://github.com/LBPHacker/CasioEmu) by LBPHacker.

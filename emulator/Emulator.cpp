@@ -290,7 +290,7 @@ namespace casioemu
 
 	std::string Emulator::GetModelFilePath(std::string relative_path)
 	{
-		std::cout<<model_path<<"/"<<relative_path;
+		//std::cout<<model_path<<"/"<<relative_path;
 		return model_path + "/" + relative_path;
 	}
 
