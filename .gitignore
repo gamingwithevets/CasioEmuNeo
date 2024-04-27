@@ -4,6 +4,7 @@
 .cache/
 asm/__pycache__
 models/*/*.bin
+models/*/*.txt
 models/*/*.asm
 models/*/*.names
 ignore/

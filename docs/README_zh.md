@@ -5,9 +5,9 @@
 卡西欧classwizard系列模拟器，汇编器，调试器，rop自动注入器
 
 ## 教程
-- [基础界面操作](./docs/intro_ui.md)
-- [汇编器使用](./docs/intro_asm.md)
-- [rop注入/调试](./docs/intro_rop.md)
+- [基础界面操作](./intro_ui_zh.md)
+- [汇编器使用](./intro_asm_zh.md)
+- [rop注入/调试](./intro_rop_zh.md)
 
 ## 不想从源码构建？下载windows预编译版本  
 [release](https://github.com/qiufuyu123/CasioEmuNeo/releases)

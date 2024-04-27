@@ -1,5 +1,5 @@
 [English](./README.md)&nbsp; [中文版本](docs/README_zh.md)
-(Note: Chinese README is unchanged.)
+(Note: Chinese README is left pretty much unchanged.)
 
 This is a fork of:
 - [CasioEmuNeo](https://github.com/qiufuyu123/CasioEmuNeo) by qiufuyu123, an upgraded version of
@@ -30,7 +30,7 @@ There are no pre-compiled binaries at the moment; however a continuous build may
    xmake f -p mingw
    xmake
    ```
-2. Set up a model profile  
+2. Set up a model profile
    Model profiles are stored in directories, which contain a `model.lua` file. Examples can be found in the `models` directory.  
    You will need to generate a disassembly using [**user202729's C++ disassembler**](https://github.com/user202729/fxesplus/tree/master/disas):
    ```shell

@@ -1,12 +1,12 @@
-# ROP使用
---> [返回目录](../README.md)
+# ROP usage
+--> [Back to README](../README.md)
 
-## ROP注入
-[rop输入教程](../README.md)
+## ROP injection
+[ROP input tutorial](../README.md)
 
-## ROP调试
+## ROP debugging
 
-1. 例如，你的程序是：
+We'll use this example program:
 ```
 pop er0
 hex 30 d2
@@ -14,20 +14,21 @@ read_key
 pop er0
 hex 32 d2 
 ```
-你想要查看read_key之后的效果  
-那么，首先找到pop er0 对应的地址：**0x121a8** (sym.txt)  
-在执行rop 之前，
-![](./rop_1.png)
-在disas窗口定位这个地址  
-点击左侧 **[ o ]**
-![](rop_2.png)
-等到变成红色的 **[ x ]**  
-然后执行rop
-![](rop_3.png)
-断点触发  
-- step 单步执行
-- next 继续
-- trace 每次pop pc或ret 触发断点(可以用于跟踪rop chain)  
+Let's say you want to see what happens after `read_key`.  
+First, you will need to find the address of the `pop er0` gadget, which you can find in `sym.txt` (`1:21A8H`/`0x121a8`)
 
-寄存器值窗口
+Before running the ROP hackstring, you will need to go to the gadget address in the disassembly:
+![](./rop_1.png)
+Then, click on the `[ o ]`, it will change into a red `[ x ]`, which sets a breakpoint here:
+![](rop_2.png)
+
+Now run the ROP hackstring, and the breakpoint will hit:
+![](rop_3.png)
+| Command | Description |
+|--|--|
+| step | Single step execution (equivalent to Step Into in most debuggers) |
+| next | Continue (equivalent to Run in most debuggers) |
+| trace | Trigger a breakpoint on every `POP PC` or `RT` (can be used to track the ROP chain) |
+
+Watch window:
 ![](rop_4.png)
