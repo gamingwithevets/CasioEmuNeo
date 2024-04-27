@@ -133,6 +133,8 @@ code            Access code. (By words, only use even address,
 data            Access data. (By bytes)
 data:watch      Set write watchpoint.
 data:rwatch     Set read watchpoint.
+data:addr_region
+                Print the name of the region the address is mapped to (if it is mapped to a region)
 help()          Print this help message.
 
 addposttick     Add a function as post-tick handler. (wrapper over emu:post_tick)

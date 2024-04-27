@@ -122,6 +122,7 @@ namespace casioemu
 		void ExecuteCommand(std::string command);
 		unsigned int GetCyclesPerSecond();
 		bool GetPaused();
+		void GetAddressRegion(size_t offset);
 		void SetPaused(bool paused);
 		void UIEvent(SDL_Event &event);
 		SDL_Renderer *GetRenderer();
