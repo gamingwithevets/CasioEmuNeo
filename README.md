@@ -23,14 +23,14 @@ There are no pre-compiled binaries at the moment; however a continuous build may
    1. Get your preferred Linux terminal up and running!
    2. Install xmake. You can usually install it through your package manager.
    3. Since ImGui by default uses an ASCII only font, you will have to download a seperate Unicode font for Unicode characters to render correctly. [Unifont](https://unifoundry.com/pub/unifont/) is recommended.
-1. Build
+1. Build  
    You may need to install additional dependencies along the way.
    ```shell
    cd emulator
    xmake f -p mingw
    xmake
    ```
-2. Set up a model profile
+2. Set up a model profile  
    Model profiles are stored in directories, which contain a `model.lua` file. Examples can be found in the `models` directory.  
    You will need to generate a disassembly using [**user202729's C++ disassembler**](https://github.com/user202729/fxesplus/tree/master/disas):
    ```shell
